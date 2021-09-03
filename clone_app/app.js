@@ -20,9 +20,6 @@ app.use('/users', require('./routes/users'));
 // products routes
 app.use('/products', require('./routes/products'));
 
-// owners routes
-app.use('/owners', require('./routes/owners'));
-
 // messages routes
 app.use('/messages', require('./routes/messages'));
 

@@ -13,6 +13,9 @@ const Product = db.define('product', {
     },
     product_about: {
         type: Sequelize.STRING,
+    },
+    product_uID: {
+        type: Sequelize.INTEGER,
     }
 });
 

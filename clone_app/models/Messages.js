@@ -2,10 +2,10 @@ const Sequelize = require('sequelize');
 const db = require('../config/database');
 
 const Message = db.define('message', {
-    message_sID: {
+    message_uID: {
         type: Sequelize.INTEGER,
     },
-    message_rID: {
+    message_pID: {
         type: Sequelize.INTEGER,
     },
     message_content: {

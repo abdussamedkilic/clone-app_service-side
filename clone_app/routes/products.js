@@ -34,7 +34,7 @@ router.get('/all/:id', (req, res) => {
         .catch(err => console.log(err));
 });
 
-// update specific Product from id
+// update specific Product from id // no need to update owner uid
 router.put('/update/:id', jsonParser, (req, res) => {
     const id = req.params.id;
     const { product_name, product_price, product_year, product_about } = req.body;
@@ -63,20 +63,28 @@ router.delete('/delete/:id', (req, res) => {
 });
 
 // add Products
-router.post('/add', jsonParser, (req, res) => {
-    let { product_name, product_price, product_year, product_about } = req.body; 
-    if (product_name != undefined || product_price != undefined || product_year != undefined || product_about != undefined) {
-        Products.create({
+router.post('/add', jsonParser, (req, res) => { // ekstradan uid ve pid'yi al 
+    
+    let { product_name, product_price, product_year, product_about, product_uID, } = req.body; 
+     if (product_name != undefined 
+        || product_price != undefined 
+        || product_year != undefined 
+        || product_about != undefined
+        || product_uID != undefined
+        ) {
+        // add product
+        Products.create({ // fotoğraf veya fotoğraflar için url veya url'leri tutacak bir string eklenecek
             product_name,
             product_price,
             product_year,
-            product_about
+            product_about,
+            product_uID
         })
             .then(product => res.redirect('/products/all'))
             .catch(err => console.log(err));
     }else{
         res.send("Error");
-    }
+    }  
 });
 
 module.exports = router;
